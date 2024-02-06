@@ -17,6 +17,14 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-def main(argv):
-    """This statement prints Hello, World to your console"""
-    print("Hello, World")
+import click
+
+@click.command()
+def hello():
+    print("Hello, World!")
+
+@click.group()
+def main():
+    pass
+
+main.add_command(hello)
