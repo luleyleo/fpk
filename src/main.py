@@ -18,13 +18,32 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import click
+from fpk.builder import Builder
+
 
 @click.command()
-def hello():
-    print("Hello, World!")
+@click.option("--target", default=".build")
+@click.argument("manifest")
+def build(target, manifest):
+    builder = Builder(target, manifest)
+    builder.build()
+
+
+@click.command()
+def run():
+    print("run")
+
+
+@click.command()
+def shell():
+    print("shell")
+
 
 @click.group()
 def main():
     pass
 
-main.add_command(hello)
+
+main.add_command(build)
+main.add_command(run)
+main.add_command(shell)
