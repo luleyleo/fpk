@@ -22,9 +22,9 @@ from fpk.builder import Builder
 
 
 @click.command()
-@click.option("--target", default=".build")
-@click.argument("manifest")
-def build(target, manifest):
+@click.option("--target", default=".build", type=click.Path(file_okay=False))
+@click.argument("manifest", type=click.Path(exists=True, dir_okay=False))
+def build(target: str, manifest: str):
     builder = Builder(target, manifest)
     builder.build()
 

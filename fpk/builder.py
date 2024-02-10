@@ -1,13 +1,12 @@
 import subprocess
-from pathlib import Path
 from typing import List
 
 
 class Builder:
-    env: Path
-    manifest: Path
+    env: str
+    manifest: str
 
-    def __init__(self, env: Path, manifest: Path) -> None:
+    def __init__(self, env: str, manifest: str) -> None:
         self.env = env
         self.manifest = manifest
 
