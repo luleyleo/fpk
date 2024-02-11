@@ -18,7 +18,8 @@ configure_file(
 fpk_sources = [
     '__init__.py',
     'main.py',
-    'builder.py'
+    'builder.py',
+    'flathub.py'
 ]
 
 install_data(fpk_sources, install_dir: moduledir)

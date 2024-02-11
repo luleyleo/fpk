@@ -19,6 +19,7 @@
 
 import click
 from fpk.builder import Builder
+from fpk.flathub import setup_remote
 
 
 @click.command()
@@ -41,7 +42,7 @@ def shell():
 
 @click.group()
 def main():
-    pass
+    setup_remote()
 
 
 main.add_command(build)
