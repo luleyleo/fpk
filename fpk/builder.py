@@ -1,3 +1,4 @@
+import pty
 import subprocess
 from typing import List
 
@@ -55,6 +56,4 @@ class Builder:
         return True
 
     def run(self, cmd: List[str]):
-        subprocess.run(
-            ["flatpak-builder", "--run", self.env, self.manifest, "--"] + cmd
-        )
+        pty.spawn(["flatpak-builder", "--run", self.env, self.manifest] + cmd)

@@ -18,6 +18,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import click
+from typing import Tuple
 from fpk.builder import Builder
 from fpk.flathub import setup_remote
 
@@ -31,13 +32,20 @@ def build(target: str, manifest: str):
 
 
 @click.command()
-def run():
-    print("run")
+@click.option("--target", default=".build", type=click.Path(file_okay=False))
+@click.argument("manifest", type=click.Path(exists=True, dir_okay=False))
+@click.argument("command", nargs=-1)
+def run(target: str, manifest: str, command: Tuple[str]):
+    builder = Builder(target, manifest)
+    builder.run(list(command))
 
 
 @click.command()
-def shell():
-    print("shell")
+@click.option("--target", default=".build", type=click.Path(file_okay=False))
+@click.argument("manifest", type=click.Path(exists=True, dir_okay=False))
+def shell(target: str, manifest: str):
+    builder = Builder(target, manifest)
+    builder.run(["bash"])
 
 
 @click.group()
