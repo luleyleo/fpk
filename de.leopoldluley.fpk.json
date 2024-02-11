@@ -5,7 +5,16 @@
     "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "fpk",
-    "finish-args": [],
+    "finish-args": [
+        "--require-version=1.0.0",
+        "--allow=devel",
+        "--talk-name=org.freedesktop.Flatpak",
+        "--share=ipc",
+        "--filesystem=host",
+        "--share=network",
+        "--filesystem=~/.local/share/flatpak",
+        "--filesystem=/var/lib/flatpak"
+    ],
     "build-options": {
         "env": {
             "V": "1",
